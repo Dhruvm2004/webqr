@@ -22,6 +22,7 @@ class _SignupPageState extends State<SignupPage> {
   Future<void> createUserWithEmailAndPassword() async {
     try { UserCredential userCredential=
       await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email.text, password: pass.text);
+      Navigator.pushNamed(context, '/home' );
         String userId = userCredential.user!.uid;
         await FirebaseFirestore.instance.collection('users').doc(userId).set({
         'name': name.text,
@@ -31,7 +32,9 @@ class _SignupPageState extends State<SignupPage> {
       );
       
       
-    } on FirebaseAuthException catch (e) {
+    } 
+    
+    on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message;
       });
