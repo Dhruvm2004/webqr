@@ -1,5 +1,4 @@
-import 'dart:ffi';
-import 'dart:nativewrappers/_internal/vm/lib/typed_data_patch.dart' as native_wrappers;
+
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
