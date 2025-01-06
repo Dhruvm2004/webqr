@@ -73,7 +73,12 @@ class _LoginPageState extends State<LoginPage> {
     try {
       await Auth()
           .signInWithEmailAndPassword(email: email.text, pass: pass.text);
-      Navigator.pushNamedAndRemoveUntil(context, '/home',(Route route)=>false);
+      Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>  HomePage(),
+                  ),
+                );
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message;

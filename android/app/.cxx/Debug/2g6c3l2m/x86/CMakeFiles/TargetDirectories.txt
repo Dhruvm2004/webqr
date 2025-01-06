@@ -1,0 +1,2 @@
+C:/Users/kathe/Desktop/flutter/projects/mobileqr/webqr/android/app/.cxx/Debug/2g6c3l2m/x86/CMakeFiles/edit_cache.dir
+C:/Users/kathe/Desktop/flutter/projects/mobileqr/webqr/android/app/.cxx/Debug/2g6c3l2m/x86/CMakeFiles/rebuild_cache.dir
