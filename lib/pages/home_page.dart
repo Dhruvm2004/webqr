@@ -1,6 +1,8 @@
 
 import 'dart:typed_data';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
@@ -42,3 +44,25 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+Future<void> _authenticateSession(String sessionId) async {
+    User? user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      await FirebaseFirestore.instance
+          .collection('web_sessions')
+          .doc(sessionId)
+          .update({
+        'isAuthenticated': true,
+        'userId': user.uid,
+        'email': user.email,
+        'displayName': user.displayName,
+        'photoURL': user.photoURL,
+        'timestamp': FieldValue.serverTimestamp(),
+      });
+      print("Session authenticated for user: ${user.uid}");
+    } else {
+      print("User not logged in.");
+    }
+  }
+
+
